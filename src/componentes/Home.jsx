@@ -1,5 +1,5 @@
 const Home = () => (
-    <div>
+    <div style={{ padding: '20px' }}>
         <h1>Salas de Aula - PWA</h1>
     </div>
 )
