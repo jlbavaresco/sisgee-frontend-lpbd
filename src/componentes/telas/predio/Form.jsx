@@ -4,6 +4,27 @@ import PredioContext from './PredioContext';
 
 function Form() {
 
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+
     const { objeto, handleChange, acaoCadastrar, alerta }
         = useContext(PredioContext);
     return (
@@ -14,12 +35,13 @@ function Form() {
                         <h5 className="modal-title" id="exampleModalLabel">Prédio</h5>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form id="formulario" onSubmit={acaoCadastrar}>
+                    <form id="formulario" onSubmit={acaoCadastrar}
+                        className="needs-validation" noValidate>
                         <div className="modal-body">
                             <Alerta alerta={alerta} />
                             <div className="form-group">
-                                <label htmlFor="txtCodido" 
-                                className="form-label">
+                                <label htmlFor="txtCodido"
+                                    className="form-label">
                                     Código
                                 </label>
                                 <input
@@ -45,6 +67,12 @@ function Form() {
                                     onChange={handleChange}
                                     required
                                 />
+                                <div className="valid-feedback">
+                                    Campo OK!
+                                </div>
+                                <div className="invalid-feedback">
+                                    Informe o campo nome!
+                                </div>                                
                             </div>
                             <div className="form-group">
                                 <label htmlFor="txtDescricao" className="form-label">
@@ -59,6 +87,12 @@ function Form() {
                                     onChange={handleChange}
                                     required
                                 />
+                                <div className="valid-feedback">
+                                    Campo OK!
+                                </div>
+                                <div className="invalid-feedback">
+                                    Informe o campo descrição!
+                                </div>                                 
                             </div>
                             <div className="form-group">
                                 <label htmlFor="txtSigla" className="form-label">
@@ -74,12 +108,18 @@ function Form() {
                                     onChange={handleChange}
                                     required
                                 />
+                                <div className="valid-feedback">
+                                    Campo OK!
+                                </div>
+                                <div className="invalid-feedback">
+                                    Informe o campo sigla!
+                                </div>                                 
                             </div>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                            <button type="submit" 
-                            className="btn btn-success">
+                            <button type="submit"
+                                className="btn btn-success">
                                 Salvar
                                 <i className="bi bi-save"></i>
                             </button>
