@@ -6,6 +6,7 @@ import Menu from './componentes/Menu'
 import Home from './componentes/Home'
 import {BrowserRouter as Router, Routes , Route } from 'react-router-dom'
 import Predio from './componentes/telas/predio/Predio'
+import Sala from './componentes/telas/sala/Sala'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route exact="true" path="/" element={<Home/>}/>
           <Route exact="true" path="/predios" element={<Predio/>}/>
+          <Route exact="true" path="/salas" element={<Sala/>}/>
         </Routes>
       </Router>
   );
